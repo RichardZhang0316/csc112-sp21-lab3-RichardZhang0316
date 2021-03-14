@@ -21,19 +21,33 @@ public class Card {
 
     // constructor
     public Card(int cardcode){
-
-
+        assert (cardcode>=0&&cardcode<52):"invalid code number"+cardcode;
+        myRank=cardcode%13;
+        mySuit=cardcode/13;
     }
 
     // lessthan() compares first by ranks and then by suits
     public Boolean lessthan(Card other){
-
-        return true;
+        assert (other!=null):"card other is null";
+        if(myRank> other.myRank){
+            return false;
+        }
+        else if(myRank< other.myRank){
+            return true;
+        }
+        else{
+            if(mySuit>= other.mySuit){
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
     }
 
     // override toString()
     @Override
     public String toString(){
-        return "???" ;
+        return (ranks[myRank]+" of "+suits[mySuit]) ;
     }
 }
